@@ -16313,13 +16313,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Company\\CompanyIndex.cshtml",
+      "TargetPath": "Views\\Company\\CompanyIndex.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Home\\LoginPartialDev.cshtml",
       "TargetPath": "Views\\Home\\LoginPartialDev.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Home\\RegisterPartialCompany.cshtml",
-      "TargetPath": "Views\\Home\\RegisterPartialCompany.cshtml",
+      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Company\\LoginPartialCompany.cshtml",
+      "TargetPath": "Views\\Company\\LoginPartialCompany.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Company\\RegisterPartialCompany.cshtml",
+      "TargetPath": "Views\\Company\\RegisterPartialCompany.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Company\\RegisterCompany.cshtml",
+      "TargetPath": "Views\\Company\\RegisterCompany.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16330,16 +16345,6 @@
     {
       "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Home\\LoginPartialCompany.cshtml",
-      "TargetPath": "Views\\Home\\LoginPartialCompany.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\Views\\Home\\RegisterCompany.cshtml",
-      "TargetPath": "Views\\Home\\RegisterCompany.cshtml",
       "FileKind": "mvc"
     },
     {
