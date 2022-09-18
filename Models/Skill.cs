@@ -12,6 +12,9 @@ public class Skill
     public string SkillName { get; set; }
     [Required]
     public byte[]  Image { get; set; }
+    [Required]
+    public int JobId { get; set; }
+    public Job? Job { get; set; }
 
 }
 

@@ -8,35 +8,12 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-white btn btn-primary" asp-area="" asp-controller="Company"
-                            asp-action="CompanyIndex">Go to Company Login</a>
+                    <li class="nav-item mx-3 text-center">
+                        <a class="nav-link  text-white btn btn-primary" asp-area="" asp-controller="Home"
+                            asp-action="logOut">LogOut</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="row">
-
-            <div class="col-sm-3"></div>
-
-            <div class="col-sm-6 text-center">
-                <h1>Welcome Developer</h1>
-                <p>Let's find a Job</p>
-            </div>
-
-            <div class="col-sm-3"></div>
-
-        </div>
-    
 </header>
-
-<div class="row">
-    <div class="col-sm-6">
-        <partial name="RegisterPartialDev"></partial>
-    </div>
-    <div class="col-sm-6">
-        <partial name="LoginPartialDev"></partial>
-    </div>
-</div>

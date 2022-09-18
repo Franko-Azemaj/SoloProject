@@ -11,19 +11,8 @@ public class MyContext : DbContext
     public MyContext(DbContextOptions options) : base(options) { }
     // the "Monsters" table name will come from the DbSet property name
     public DbSet<Dev> Devs { get; set; } 
+    public DbSet<Company> Companies { get; set; } 
+    public DbSet<Job> Jobs { get; set; } 
+    public DbSet<Skill> Skills { get; set; } 
 
-
-    //  protected override void OnModelCreating(ModelBuilder modelBuilder)
-    // {
-        
-    //     modelBuilder.Entity<Request>()
-    //         .HasOne(r => r.Reciver)
-    //         .WithMany(u => u.ReciverRequests)
-    //         .HasForeignKey(r => r.ReciverId);
-
-    //     modelBuilder.Entity<Request>()
-    //         .HasOne(r => r.Sender)
-    //         .WithMany(u => u.SenderRequests)
-    //         .HasForeignKey(r => r.SenderId);
-    // }
 }

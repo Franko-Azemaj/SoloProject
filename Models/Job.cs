@@ -15,3 +15,4 @@ public class Job {
     public List<Skill> Skills { get; set; } =  new List<Skill>();
 
 }
+
