@@ -13,6 +13,6 @@ public class MyContext : DbContext
     public DbSet<Dev> Devs { get; set; } 
     public DbSet<Company> Companies { get; set; } 
     public DbSet<Job> Jobs { get; set; } 
-    public DbSet<Skill> Skills { get; set; } 
+    //public DbSet<Skill> Skills { get; set; } 
 
 }

@@ -11,8 +11,8 @@ public class Job {
     public string Name { get; set; }
     [Required]
     public string Description { get; set; }
-    [Required]
-    public List<Skill> Skills { get; set; } =  new List<Skill>();
+    //[Required]
+    //public List<Skill> Skills { get; set; } =  new List<Skill>();
 
 }
 

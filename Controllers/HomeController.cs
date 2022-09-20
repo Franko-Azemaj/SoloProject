@@ -124,13 +124,14 @@ public class HomeController : Controller
         return RedirectToAction("registerDev");
     }
 
-    // [HttpGet("Home/hello")]
-    // public IActionResult Logout2()
+    // [HttpPost("/addSkillToDB")]
+    // public IActionResult CreateSkill( Skill skill)
     // {
-
-    //     HttpContext.Session.Clear();
-    //     return RedirectToAction("RegisterDev");
+    //     _context.Add(skill);
+    //     _context.SaveChanges();
     // }
+
+
 
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

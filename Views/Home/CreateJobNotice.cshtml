@@ -1,3 +1,5 @@
+@model DevProfile
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -17,3 +19,72 @@
         </div>
     </nav>
 </header>
+
+<div class="row d-flex-column">
+    <div class="col-sm-1"></div>
+
+    <div class="col-sm-10 border border-secondary border-5">
+
+        <nav class="bg-primary">
+            <h1 class="text-center p-3">Add your Skills</h1>
+        </nav>
+        <main>
+            @* Languages that you chose will be despayed here *@
+
+            <div class="row">
+
+                <div class="col-sm-1"></div>
+                <h1 class="col-sm-5">Pick your Top 5 language</h1>
+                <div class="col-sm-5" id="selected-languages-container"></div>
+                <div class="col-sm-1"></div>
+
+            </div>
+            <div class="row">
+
+                @* All the languages you can chose *@
+                <div class="col-sm-5 border border-secondary overflow-auto mh-100 m-4" style="height: 450px; ">
+
+
+                    <div class=" d-flex flex-row m-3">
+
+                        @foreach (var skill in Skill.Skills)
+                        {
+                            <div class="language-item" onclick="selectLanguage(@skill.Code, this)" id="skill-@skill.Code"
+                            class="text-center">
+                                <img src="@skill.Image" class="img-fluid" alt="c#" />
+                                <label class="" for="">@skill.Name</label>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <h2>Short Bio</h2>
+                    <textarea name="" id="" cols="75" rows="15"></textarea>
+
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6 text-center">
+
+                    <form action="" method="post">
+                        
+                        @* <input name="@nameof()" value="@Model.DevProfileId" type="hidden"/>
+                        <input name="@nameof()" value="@Model.DevProfileId" type="hidden"/>
+                        <input name="@nameof()" value="@Model.DevProfileId" type="hidden"/> *@
+
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Complete Work Notice</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="col-sm-1"></div>
+</div>

@@ -1,20 +1,25 @@
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 namespace DevJobMatcher.Models;
-#pragma warning disable CS8618
-using System.ComponentModel.DataAnnotations.Schema;
 
 public class Skill 
 {
+    public static IReadOnlySet<Skill> Skills { get; } = new HashSet<Skill>(){
+        new Skill{
+            Code = 1,
+            Name = "C#",
+            Image = "assets/C-Sharp.webp"
+        },
+        new Skill{
+            Code = 2,
+            Name = "Java",
+            Image = "assets/java.jpg"
+        }
+    }; 
 
-    [Key]
-    public int SkillId { get; set; }
-    [Required]
-    public string SkillName { get; set; }
-    [Required]
-    public byte[]  Image { get; set; }
-    [Required]
-    public int JobId { get; set; }
-    public Job? Job { get; set; }
+    public int Code { get; set; }
+    public string Name { get; set; }
+    public string  Image { get; set; }
 
 }
 

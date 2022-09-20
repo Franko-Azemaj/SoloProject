@@ -16,3 +16,34 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+img {
+  float: left;
+  width:  100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.language-item{
+  min-width: 100px;
+  min-height: 100px;
+  margin: 5px;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.language-item:hover{
+  cursor: pointer;
+}
+
+.language-item.selected{
+  background-color: #ccc;
+}
+
+#selected-languages-container{
+  border: 2px solid #ccc;
+  min-width:  200px;
+  min-height:  100px;
+  display: flex;
+}
