@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevJobMatcher.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220918142613_second")]
+    [Migration("20220921234110_second")]
     partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,6 +99,26 @@ namespace DevJobMatcher.Migrations
                     b.ToTable("Devs");
                 });
 
+            modelBuilder.Entity("DevJobMatcher.Models.DevProfile", b =>
+                {
+                    b.Property<int>("DevProfileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("DevId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DevProfileId");
+
+                    b.HasIndex("DevId");
+
+                    b.ToTable("DevProfiles");
+                });
+
             modelBuilder.Entity("DevJobMatcher.Models.Job", b =>
                 {
                     b.Property<int>("JobId")
@@ -118,44 +138,55 @@ namespace DevJobMatcher.Migrations
                     b.ToTable("Jobs");
                 });
 
-            modelBuilder.Entity("DevJobMatcher.Models.Skill", b =>
+            modelBuilder.Entity("DevJobMatcher.Models.SelectedSkill", b =>
                 {
-                    b.Property<int>("SkillId")
+                    b.Property<int>("SelectedSkillId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("longblob");
-
-                    b.Property<int>("JobId")
+                    b.Property<int>("DevProfileId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SkillName")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("SkillId");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.HasIndex("JobId");
+                    b.HasKey("SelectedSkillId");
 
-                    b.ToTable("Skills");
+                    b.HasIndex("DevProfileId");
+
+                    b.ToTable("SelectedSkills");
                 });
 
-            modelBuilder.Entity("DevJobMatcher.Models.Skill", b =>
+            modelBuilder.Entity("DevJobMatcher.Models.DevProfile", b =>
                 {
-                    b.HasOne("DevJobMatcher.Models.Job", "Job")
-                        .WithMany("Skills")
-                        .HasForeignKey("JobId")
+                    b.HasOne("DevJobMatcher.Models.Dev", "Creator")
+                        .WithMany()
+                        .HasForeignKey("DevId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Job");
+                    b.Navigation("Creator");
                 });
 
-            modelBuilder.Entity("DevJobMatcher.Models.Job", b =>
+            modelBuilder.Entity("DevJobMatcher.Models.SelectedSkill", b =>
                 {
-                    b.Navigation("Skills");
+                    b.HasOne("DevJobMatcher.Models.DevProfile", "Creator")
+                        .WithMany("SelectedSkills")
+                        .HasForeignKey("DevProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.DevProfile", b =>
+                {
+                    b.Navigation("SelectedSkills");
                 });
 #pragma warning restore 612, 618
         }

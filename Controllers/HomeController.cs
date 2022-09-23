@@ -24,6 +24,7 @@ public class HomeController : Controller
             return RedirectToAction("RegisterDev");
         }
 
+        
         return View();
     }
 
@@ -98,7 +99,7 @@ public class HomeController : Controller
             }
             HttpContext.Session.SetInt32("userId", userInDb.DevId);
 
-            return RedirectToAction("JobNotice");
+            return RedirectToAction("index");
         }
 
         return View("RegisterDev");
@@ -116,6 +117,65 @@ public class HomeController : Controller
         return View("CreateJobNotice");
     }
 
+    public class JobNoticeModel
+    {
+        public string Description { get; set; }
+        public int[] skills { get; set; }
+    }
+
+    [HttpPost("AddJobNotice")]
+    public IActionResult AddJobNotice([FromForm] JobNoticeModel notice)
+    {
+        
+            
+        if (ModelState.IsValid)
+        {
+            int id = (int)HttpContext.Session.GetInt32("userId");
+
+            if(notice.skills.Count() > 5)
+            return BadRequest();
+
+            DevProfile devprofile = new DevProfile
+            {
+                Bio = notice.Description,
+                DevId = id
+            };
+
+            _context.DevProfiles.Add(devprofile);
+
+
+            //All skills
+            List<Skill> allSkills = new List<Skill>();
+            foreach (var skill in Skill.Skills)
+            {
+                allSkills.Add(skill);
+            }
+
+            foreach (var code in notice.skills)
+            {
+
+                ViewBag.Skill = allSkills.FirstOrDefault(e => e.Code == code);
+
+                SelectedSkill selectedSkill = new SelectedSkill
+                {
+                    Creator = devprofile,
+                    Name = ViewBag.Skill.Name,
+                    Image = ViewBag.Skill.Image
+                };
+
+                _context.SelectedSkills.Add(selectedSkill);
+
+            }
+
+            _context.SaveChanges();
+
+        return RedirectToAction("index");
+
+        }
+
+        return View("CreateJobNotice");
+    }
+
     [HttpGet("Home/logOut")]
     public IActionResult Logout()
     {
@@ -123,14 +183,6 @@ public class HomeController : Controller
         HttpContext.Session.Clear();
         return RedirectToAction("registerDev");
     }
-
-    // [HttpPost("/addSkillToDB")]
-    // public IActionResult CreateSkill( Skill skill)
-    // {
-    //     _context.Add(skill);
-    //     _context.SaveChanges();
-    // }
-
 
 
 

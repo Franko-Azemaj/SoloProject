@@ -9,11 +9,9 @@ public class DevProfile
     public int DevProfileId { get; set; }
     [Required]
     public string Bio { get; set; }
+    public IList<SelectedSkill> SelectedSkills { get; set; }
     [Required]
-    public int SkillCode { get; set; }
-    [Required]
-    public string SkillName { get; set; }
-    [Required]
-    public string SkillImage { get; set; }
+    public int DevId { get; set; }
+    public Dev? Creator { get; set; }
 
 }

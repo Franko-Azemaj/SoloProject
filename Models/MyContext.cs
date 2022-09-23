@@ -9,10 +9,10 @@ namespace DevJobMatcher.Models;
 public class MyContext : DbContext 
 { 
     public MyContext(DbContextOptions options) : base(options) { }
-    // the "Monsters" table name will come from the DbSet property name
     public DbSet<Dev> Devs { get; set; } 
+    public DbSet<DevProfile> DevProfiles { get; set; } 
     public DbSet<Company> Companies { get; set; } 
     public DbSet<Job> Jobs { get; set; } 
-    //public DbSet<Skill> Skills { get; set; } 
+    public DbSet<SelectedSkill> SelectedSkills { get; set; } 
 
 }

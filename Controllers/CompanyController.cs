@@ -25,6 +25,12 @@ public class CompanyController : Controller
             return RedirectToAction("RegisterCompany");
         }
 
+        ViewBag.AllDevs = _context.DevProfiles
+            .Include(d => d.Creator)
+            .Include(m => m.SelectedSkills)
+            .ToList();
+
+
         return View();
     }
 
@@ -102,9 +108,28 @@ public class CompanyController : Controller
 
         return View("RegisterCompany");
 
+
     }
 
+    [HttpGet("/jobs/new")]
+    public IActionResult CreatePosition()
+    {
+        return View("CreatePosition");
+    }
 
+    // [HttpGet("CreatePosition")]
+    // public IActionResult CreatePosition()
+    // {
+
+    // }
+
+    [HttpGet("logOut")]
+    public IActionResult Logout()
+    {
+
+        HttpContext.Session.Clear();
+        return RedirectToAction("RegisterCompany");
+    }
 
 
 }
