@@ -36,6 +36,8 @@ public class Company
     [DataType(DataType.Password)]
     public string Confirm { get; set; }
 
+    public List<Job> CreatedJobs { get; set; } =  new List<Job>();
+
 }
 public class LoginCompany
 {

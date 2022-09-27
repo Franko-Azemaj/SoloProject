@@ -1,42 +1,55 @@
+@model Dev
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light p-2">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DevJobMatcher</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-white btn btn-primary" asp-area="" asp-controller="Company"
-                            asp-action="CompanyIndex">Go to Company Login</a>
+                            asp-action="LoginCompany">Go to Company Login</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="row">
-
-            <div class="col-sm-3"></div>
-
-            <div class="col-sm-6 text-center">
-                <h1>Welcome Developer</h1>
-                <p>Let's find a Job</p>
-            </div>
-
-            <div class="col-sm-3"></div>
-
-        </div>
-    
 </header>
+<div class="body">
+    <div class="container">
+        <form id="login-form" action="/RegisterDev" method="post" class="mx-1 mx-md-4">
+            <div class="form-content">
+                <div class="signup-form">
+                    <div class="title">Developer Register</div>
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <div class="input-box">
+                                <input class="login-form-input" asp-for="FirstName"
+                                    placeholder="Enter your first name" />
+                                <span class="text-danger" asp-validation-for="FirstName"></span>
+                            </div>
+                            <div class="input-box">
+                                <input asp-for="LastName" class="login-form-input" placeholder="Enter your last name" />
+                                <span class="text-danger" asp-validation-for="LastName"></span>
 
-<div class="row">
-    <div class="col-sm-6">
-        <partial name="RegisterPartialDev"></partial>
-    </div>
-    <div class="col-sm-6">
-        <partial name="LoginPartialDev"></partial>
+                            </div>
+                            <input class="login-form-input" asp-for="Email" placeholder="Enter your email" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+                        <div class="input-box">
+                            <input class="login-form-input" asp-for="Password" placeholder="Enter your password" />
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+                        <div class="input-box">
+                            <input asp-for="Confirm" class="login-form-input" placeholder="Confirm your password" />
+                            <span class="text-danger" asp-validation-for="Confirm"></span>
+                        </div>
+                        <div class="text">Already an account?<a class="links" asp-controller="Home"
+                                asp-action="LoginDev">Log In now</a>
+                        </div>
+                        <button type="submit" class="login-button">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

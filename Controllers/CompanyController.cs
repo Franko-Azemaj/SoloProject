@@ -11,25 +11,28 @@ public class CompanyController : Controller
     private readonly ILogger<HomeController> _logger;
     private MyContext _context;
 
-    public CompanyController(ILogger<HomeController> logger,MyContext context)
+    public CompanyController(ILogger<HomeController> logger, MyContext context)
     {
         _logger = logger;
         _context = context;
     }
 
-     [HttpGet("Companyindex")]
+    [HttpGet("Companyindex")]
     public ActionResult CompanyIndex()
-    {   
+    {
         if (HttpContext.Session.GetInt32("userId") == null)
         {
             return RedirectToAction("RegisterCompany");
         }
-
+        //All developers available
         ViewBag.AllDevs = _context.DevProfiles
             .Include(d => d.Creator)
             .Include(m => m.SelectedSkills)
             .ToList();
 
+
+        //All Positions to fill
+        ViewBag.AllPositions = _context.Jobs.ToList();
 
         return View();
     }
@@ -46,6 +49,7 @@ public class CompanyController : Controller
         return RedirectToAction("Companyindex");
 
     }
+
     [HttpPost("RegisterCompany")]
     public IActionResult RegisterCompany(Company company)
     {
@@ -73,6 +77,19 @@ public class CompanyController : Controller
         return View();
     }
 
+    [HttpGet("Company/LoginCompany")]
+    public IActionResult LoginCompany()
+    {
+
+        if (HttpContext.Session.GetInt32("userId") == null)
+        {
+            return View("CompanyLogin");
+        }
+
+        return RedirectToAction("Companyindex");
+
+    }
+
     [HttpPost("LoginCompany")]
     public IActionResult LoginSubmit(LoginCompany userSubmission)
     {
@@ -85,7 +102,7 @@ public class CompanyController : Controller
             {
                 // Add an error to ModelState and return to View!
                 ModelState.AddModelError("User", "Invalid Email/Password");
-                return View("RegisterCompany");
+                return View("CompanyLogin");
             }
 
             // Initialize hasher object
@@ -98,7 +115,7 @@ public class CompanyController : Controller
             if (result == 0)
             {
                 ModelState.AddModelError("Password", "Invalid Password");
-                return View("RegisterCompany");
+                return View("CompanyLogin");
                 // handle failure (this should be similar to how "existing email" is handled)
             }
             HttpContext.Session.SetInt32("userId", userInDb.CompanyId);
@@ -106,7 +123,7 @@ public class CompanyController : Controller
             return RedirectToAction("Companyindex");
         }
 
-        return View("RegisterCompany");
+        return View("CompanyLogin");
 
 
     }
@@ -114,22 +131,116 @@ public class CompanyController : Controller
     [HttpGet("/jobs/new")]
     public IActionResult CreatePosition()
     {
+        if (HttpContext.Session.GetInt32("userId") == null)
+        {
+            return View("CompanyLogin");
+        }
+
         return View("CreatePosition");
     }
 
-    // [HttpGet("CreatePosition")]
-    // public IActionResult CreatePosition()
-    // {
+    public class PositionModel
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int[] skills { get; set; }
+    }
 
-    // }
+
+    [HttpPost("CreatePosition")]
+    public IActionResult CreatePosition([FromForm] PositionModel position)
+    {
+        if (ModelState.IsValid)
+        {
+            int id = (int)HttpContext.Session.GetInt32("userId");
+
+            Job newJob = new Job
+            {
+                Name = position.Name,
+                Description = position.Description,
+                CompanyId = id
+            };
+            _context.Jobs.Add(newJob);
+            List<Skill> AllSkills = new List<Skill>();
+
+            foreach (var skill in Skill.Skills)
+            {
+                AllSkills.Add(skill);
+            }
+
+            foreach (var code in position.skills)
+            {
+                ViewBag.skill = AllSkills.FirstOrDefault(e => e.Code == code);
+                JobSkill newJobSkill = new JobSkill
+                {
+                    SkillCreator = newJob,
+                    Name = ViewBag.skill.Name,
+                    Image = ViewBag.skill.Image,
+                };
+
+                _context.JobSkills.Add(newJobSkill);
+            }
+            _context.SaveChanges();
+            var DevProf = _context.DevProfiles.Include(e => e.SelectedSkills).ToList();
+            var CurrentJob = _context.Jobs.Include(e => e.SkillsNeeded).FirstOrDefault(e => e.JobId == newJob.JobId);
+            int count = 0;
+            foreach (var devP in DevProf)
+            {
+                foreach (var job in devP.SelectedSkills)
+                {
+                    foreach (var jobskill in CurrentJob.SkillsNeeded)
+                    {
+                        if (job.Name == jobskill.Name)
+                        {
+                            count++;
+                        }
+                    }
+
+                    if (count == 5)
+                    {
+                        Match newMatch = new Match
+                        {
+                            DevProfileMatched = devP,
+                            JobMatched = CurrentJob
+                        };
+                        _context.Matches.Add(newMatch);
+                        count = 0;
+                    }
+                }
+
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("CompanyIndex");
+        }
+
+        return View("CreatePosition");
+    }
+
+    [HttpGet("jobs/{id}")]
+    public IActionResult ShowMatches(int id)
+    {
+        if (HttpContext.Session.GetInt32("userId") == null)
+        {
+            return View("CompanyLogin");
+        }
+
+        ViewBag.Matches = _context.Matches.Include(e => e.DevProfileMatched)
+    .ThenInclude(e => e.SelectedSkills)
+    .Include(e => e.DevProfileMatched)
+    .ThenInclude(e => e.Creator)
+            .Where(e => e.JobId == id).ToList();
+
+        return View("ShowMatches");
+    }
 
     [HttpGet("logOut")]
     public IActionResult Logout()
     {
-
         HttpContext.Session.Clear();
         return RedirectToAction("RegisterCompany");
     }
 
-
 }
+
+

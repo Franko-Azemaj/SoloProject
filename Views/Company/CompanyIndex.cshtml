@@ -1,10 +1,7 @@
+@model Job
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light p-2">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item mx-3 text-center">
@@ -16,44 +13,48 @@
         </div>
     </nav>
 </header>
-
 <main>
-
-    <div class="row">
-        <div class="col-sm-3">
-            <a class="btn btn-primary" href="/jobs/new">List a New Job Position</a>
-        </div>
-        <div class="col-sm-8 availableDev">
-
-            @foreach (var item in ViewBag.AllDevs)
-            {
-                <div class="border border-secondary">
-
-                    <div class="d-flex flex-row">
-                        @foreach (var skill in item.SelectedSkills)
+    <div id="body">
+        <div class="col-sm-3 side-bar">
+                <a class="btn btn-primary" href="/jobs/new">List a New Job Position</a>
+                <div class="">
+                    <div class="header">Positions to fill</div>
+                    <div class="jobs ">
+                        @foreach (var job in ViewBag.AllPositions)
                         {
-                            <div class="language-item" class="text-center">
-                                <div class="image-container">
-                                    <img src="@skill.Image" class="img-fluid" alt="" />
-                                </div>
-                                <label class="" for="">@skill.Name</label>
-                            </div>
+                            <a href="jobs/@job.JobId">@job.Name</a>
                         }
                     </div>
-
-
-
-                    <h1>@item.Creator.FirstName</h1>
-                    <h1>@item.Creator.LastName</h1>
-                    <p>@item.Bio</p>
-
-
-
-
                 </div>
-            }
+            </div>
+        <div class="content">
+            
+            <div >
 
+                @foreach (var item in ViewBag.AllDevs)
+                {
+                    <div class="match-item  mb-2">
+                        <div class="top-section">
+                            <div class="name-container">
+                            @item.Creator.FirstName
+                                @item.Creator.LastName
+                            </div>
+                            <div class="d-flex flex-row languages-container">
+                                @foreach (var skill in item.SelectedSkills)
+                                {
+                                    <div class="small-language-item">
+                                        <div class="image-container">
+                                            <img src="/@skill.Image" class="img-fluid" alt="" />
+                                        </div>
+                                        <label class="" for="">@skill.Name</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <p>@item.Bio</p>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-
 </main>

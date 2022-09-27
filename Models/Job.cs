@@ -11,7 +11,10 @@ public class Job {
     public string Name { get; set; }
     [Required]
     public string Description { get; set; }
+    public int CompanyId { get; set; }
+    public Company? Creator { get; set; }
     public List<JobSkill> SkillsNeeded { get; set; } =  new List<JobSkill>();
+    public List<Match> MatchedJobs { get; set; } =  new List<Match>();
 
 }
 

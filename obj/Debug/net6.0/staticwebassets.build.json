@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o8Ok7RGYBgeW0U+/s3JXQBW+Bs9ArMMkPaToXg4frOo=",
+  "Hash": "RtFG/ziV24TxoZMqFpay3S2dFUiepikG89+q6Czfl6g=",
   "Source": "DevJobMatcher",
   "BasePath": "_content/DevJobMatcher",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\DevJobMatcher.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\assets\\apply.png",
+      "SourceId": "DevJobMatcher",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\",
+      "BasePath": "_content/DevJobMatcher",
+      "RelativePath": "assets/apply.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\apply.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\assets\\C-Sharp.webp",
@@ -185,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\javaScript.png"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\assets\\message.png",
+      "SourceId": "DevJobMatcher",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\",
+      "BasePath": "_content/DevJobMatcher",
+      "RelativePath": "assets/message.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\message.png"
     },
     {
       "Identity": "C:\\Users\\HP\\Desktop\\SoloProject\\DevJobMatcher\\wwwroot\\assets\\objective-c.png",

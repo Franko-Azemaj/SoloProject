@@ -23,8 +23,16 @@ public class HomeController : Controller
         {
             return RedirectToAction("RegisterDev");
         }
+        int id = (int)HttpContext.Session.GetInt32("userId");
 
-        
+        ViewBag.CurrentProfile = _context.DevProfiles.FirstOrDefault(e => e.DevId == id);
+        int profileId = ViewBag.CurrentProfile.DevProfileId;
+         ViewBag.Matches = _context.Matches.Include(e => e.JobMatched)
+            .ThenInclude(e => e.Creator)
+            .Include(e => e.JobMatched)
+            .ThenInclude(e => e.SkillsNeeded)
+            .Where(e => e.DevProfileId == profileId).ToList();
+
         return View();
     }
 
@@ -42,6 +50,7 @@ public class HomeController : Controller
         return RedirectToAction("Index");
 
     }
+
     [HttpPost("RegisterDev")]
     public IActionResult RegisterDev(Dev dev)
     {
@@ -69,6 +78,16 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpGet("LoginDev")]
+    public IActionResult LoginDev()
+    {
+        if (HttpContext.Session.GetInt32("userId") == null)
+        {
+            return View("DevLogin");
+        }
+        return RedirectToAction("Index");
+    }
+
     [HttpPost("LoginDev")]
     public IActionResult LoginSubmit(LoginDev userSubmission)
     {
@@ -81,7 +100,7 @@ public class HomeController : Controller
             {
                 // Add an error to ModelState and return to View!
                 ModelState.AddModelError("User", "Invalid Email/Password");
-                return View("RegisterDev");
+                return View("DevLogin");
             }
 
             // Initialize hasher object
@@ -94,16 +113,14 @@ public class HomeController : Controller
             if (result == 0)
             {
                 ModelState.AddModelError("Password", "Invalid Password");
-                return View("RegisterDev");
+                return View("DevLogin");
                 // handle failure (this should be similar to how "existing email" is handled)
             }
             HttpContext.Session.SetInt32("userId", userInDb.DevId);
 
             return RedirectToAction("index");
         }
-
-        return View("RegisterDev");
-
+        return View("DevLogin");
     }
 
     [HttpGet("CreateJobNotice")]
@@ -182,6 +199,12 @@ public class HomeController : Controller
 
         HttpContext.Session.Clear();
         return RedirectToAction("registerDev");
+    }
+
+    [HttpGet("Home/newLogin")]
+    public IActionResult NewLogin(){
+
+        return View("newLogin");
     }
 
 

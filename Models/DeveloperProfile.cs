@@ -13,5 +13,6 @@ public class DevProfile
     [Required]
     public int DevId { get; set; }
     public Dev? Creator { get; set; }
+    public List<Match> MatchedProfiles { get; set; } =  new List<Match>();
 
 }

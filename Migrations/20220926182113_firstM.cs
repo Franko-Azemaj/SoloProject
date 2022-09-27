@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DevJobMatcher.Migrations
 {
-    public partial class first : Migration
+    public partial class firstM : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,11 +74,18 @@ namespace DevJobMatcher.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CompanyId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Jobs", x => x.JobId);
+                    table.ForeignKey(
+                        name: "FK_Jobs_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -100,6 +107,57 @@ namespace DevJobMatcher.Migrations
                         column: x => x.DevId,
                         principalTable: "Devs",
                         principalColumn: "DevId",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "JobSkills",
+                columns: table => new
+                {
+                    JobSkillId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Image = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    JobId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobSkills", x => x.JobSkillId);
+                    table.ForeignKey(
+                        name: "FK_JobSkills_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "JobId",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Matches",
+                columns: table => new
+                {
+                    MatchId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DevProfileId = table.Column<int>(type: "int", nullable: false),
+                    JobId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Matches", x => x.MatchId);
+                    table.ForeignKey(
+                        name: "FK_Matches_DevProfiles_DevProfileId",
+                        column: x => x.DevProfileId,
+                        principalTable: "DevProfiles",
+                        principalColumn: "DevProfileId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Matches_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "JobId",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -134,6 +192,26 @@ namespace DevJobMatcher.Migrations
                 column: "DevId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Jobs_CompanyId",
+                table: "Jobs",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobSkills_JobId",
+                table: "JobSkills",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Matches_DevProfileId",
+                table: "Matches",
+                column: "DevProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Matches_JobId",
+                table: "Matches",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SelectedSkills_DevProfileId",
                 table: "SelectedSkills",
                 column: "DevProfileId");
@@ -142,16 +220,22 @@ namespace DevJobMatcher.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Companies");
+                name: "JobSkills");
 
             migrationBuilder.DropTable(
-                name: "Jobs");
+                name: "Matches");
 
             migrationBuilder.DropTable(
                 name: "SelectedSkills");
 
             migrationBuilder.DropTable(
+                name: "Jobs");
+
+            migrationBuilder.DropTable(
                 name: "DevProfiles");
+
+            migrationBuilder.DropTable(
+                name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "Devs");

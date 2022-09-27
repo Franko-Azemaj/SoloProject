@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevJobMatcher.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220921201954_first")]
-    partial class first
+    [Migration("20220926200721_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,6 +125,9 @@ namespace DevJobMatcher.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -135,7 +138,54 @@ namespace DevJobMatcher.Migrations
 
                     b.HasKey("JobId");
 
+                    b.HasIndex("CompanyId");
+
                     b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.JobSkill", b =>
+                {
+                    b.Property<int>("JobSkillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("JobSkillId");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("JobSkills");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.Match", b =>
+                {
+                    b.Property<int>("MatchId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("DevProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MatchId");
+
+                    b.HasIndex("DevProfileId");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Matches");
                 });
 
             modelBuilder.Entity("DevJobMatcher.Models.SelectedSkill", b =>
@@ -173,6 +223,47 @@ namespace DevJobMatcher.Migrations
                     b.Navigation("Creator");
                 });
 
+            modelBuilder.Entity("DevJobMatcher.Models.Job", b =>
+                {
+                    b.HasOne("DevJobMatcher.Models.Company", "Creator")
+                        .WithMany("CreatedJobs")
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Creator");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.JobSkill", b =>
+                {
+                    b.HasOne("DevJobMatcher.Models.Job", "SkillCreator")
+                        .WithMany("SkillsNeeded")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SkillCreator");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.Match", b =>
+                {
+                    b.HasOne("DevJobMatcher.Models.DevProfile", "DevProfileMatched")
+                        .WithMany("MatchedProfiles")
+                        .HasForeignKey("DevProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DevJobMatcher.Models.Job", "JobMatched")
+                        .WithMany("MatchedJobs")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DevProfileMatched");
+
+                    b.Navigation("JobMatched");
+                });
+
             modelBuilder.Entity("DevJobMatcher.Models.SelectedSkill", b =>
                 {
                     b.HasOne("DevJobMatcher.Models.DevProfile", "Creator")
@@ -184,9 +275,23 @@ namespace DevJobMatcher.Migrations
                     b.Navigation("Creator");
                 });
 
+            modelBuilder.Entity("DevJobMatcher.Models.Company", b =>
+                {
+                    b.Navigation("CreatedJobs");
+                });
+
             modelBuilder.Entity("DevJobMatcher.Models.DevProfile", b =>
                 {
+                    b.Navigation("MatchedProfiles");
+
                     b.Navigation("SelectedSkills");
+                });
+
+            modelBuilder.Entity("DevJobMatcher.Models.Job", b =>
+                {
+                    b.Navigation("MatchedJobs");
+
+                    b.Navigation("SkillsNeeded");
                 });
 #pragma warning restore 612, 618
         }

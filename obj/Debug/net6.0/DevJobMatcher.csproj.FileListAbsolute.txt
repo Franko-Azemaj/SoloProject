@@ -33,3 +33,10 @@ C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\refint\DevJobMatc
 C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\DevJobMatcher.pdb
 C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\DevJobMatcher.genruntimeconfig.cache
 C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\ref\DevJobMatcher.dll
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Home\RegisterDev.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Company\CompanyLogin.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Company\RegisterCompany.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Company\showMatches.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Home\DevLogin.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Company\CompanyIndex.cshtml.rz.scp.css
+C:\Users\HP\Desktop\SoloProject\DevJobMatcher\obj\Debug\net6.0\scopedcss\Views\Home\index.cshtml.rz.scp.css

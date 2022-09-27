@@ -111,3 +111,56 @@ img {
 #languages-container::-webkit-scrollbar-thumb:hover {
   background: #0e6193; 
 }
+
+.login-form-input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+  color: #ffffff;
+  background-color: #16214066;
+  background-clip: padding-box;
+  border: 1px solid #b5d4f378;
+  margin-bottom: 20px;
+}
+
+.login-form-input:focus{
+  transform: scale(1.02);
+}
+
+.login-form-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+
+#login-form{
+  height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.links
+{
+  color: #5e00c5d1;
+  margin: 5px;
+}
+
+.logOutBtn{
+
+  background-color: #446190;
+  padding: 7px 19px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px #00000052;
+
+}
+

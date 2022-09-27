@@ -15,48 +15,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\SoloProject\DevJobMatcher
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/CompanyIndex.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDb21wYW55SW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/CreatePosition.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDcmVhdGVQb3NpdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/LoginPartialCompany.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxMb2dpblBhcnRpYWxDb21wYW55LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/RegisterCompany.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxSZWdpc3RlckNvbXBhbnkuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/RegisterPartialCompany.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxSZWdpc3RlclBhcnRpYWxDb21wYW55LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/CreateJobNotice.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVKb2JOb3RpY2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/LoginPartialDev.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpblBhcnRpYWxEZXYuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/RegisterDev.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckRldi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/RegisterPartialDev.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlclBhcnRpYWxEZXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Shared/Error.cshtml]
@@ -74,6 +38,34 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/CompanyIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDb21wYW55SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-19lna1bfwm
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/CompanyLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxDb21wYW55TG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-yo1k07m6ld
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/RegisterCompany.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxSZWdpc3RlckNvbXBhbnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-x5mpsvlcxc
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Company/showMatches.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxzaG93TWF0Y2hlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-0153a6k4vj
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/DevLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXZMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-z8a2l7zbj5
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-2ilucbqcyk
+
+[C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Home/RegisterDev.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlckRldi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-w9q6vx9ej4
 
 [C:/Users/HP/Desktop/SoloProject/DevJobMatcher/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

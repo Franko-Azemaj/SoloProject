@@ -14,5 +14,6 @@ public class MyContext : DbContext
     public DbSet<Company> Companies { get; set; } 
     public DbSet<Job> Jobs { get; set; } 
     public DbSet<SelectedSkill> SelectedSkills { get; set; } 
-
+    public DbSet<JobSkill> JobSkills { get; set; } 
+    public DbSet<Match> Matches { get; set; } 
 }

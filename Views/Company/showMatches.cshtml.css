@@ -1,0 +1,165 @@
+.header{
+  background-color: #3153b1a6;
+}
+.body{
+  align-items: center;
+  background-color: #406091;
+  margin: 0;
+  padding-top: 20px;
+  min-height: 100vh;
+}
+.content{
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+.match-item{
+  background-color: #7aa5eb4a;
+  border: 2px solid #0000000f;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  margin: 14px 0;
+  box-shadow: 1px 1px 9px 1px #00000036;
+  color: white;
+  padding: 10px 0px;
+  font-weight: bold;
+  background: linear-gradient(49deg, rgb(45 84 153 / 20%) 0%, rgb(85 116 170) 20%, rgb(105 177 251 / 39%) 100%);
+}
+
+.jobs{
+  
+  display: flex;
+  flex-direction:column;
+
+}
+
+.top-section{
+  display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.name-container{
+  flex-grow: 1;
+  background-color: #fffdfd1c;
+  padding: 10px 20px;
+  margin: 0;
+    background: linear-gradient(326deg, rgb(45 84 153 / 20%) 0%, rgb(85 116 170) 20%, rgb(105 177 251 / 39%) 100%);
+    box-shadow: 0 0 12px #0000001a;
+}
+
+.content-section{
+  padding-right: 20px;
+}
+
+.languages-container{
+  position: absolute;
+  right: 0;
+}
+
+.small-language-item{
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  border: 1px solid #0000000d;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px #00000052;
+  font-weight: bold;
+  background: #93cdff8c;
+  width: fit-content;
+  min-width: 50px;
+  height: 60px;
+  font-size: 0.7em;
+  padding: 5px;
+  margin: 0 10px;
+  margin-top: -20px ;
+  backdrop-filter: blur(2px);
+}
+
+.small-language-item .image-container {
+  flex-grow: 6;
+  min-height: 0;
+  display: flex;
+  align-content: center;
+}
+
+.small-language-item img {
+  object-fit: cover;
+  max-height: 100%;
+}
+
+.small-language-item label {
+  flex-grow: 0;
+  line-height: 1.2;
+}
+
+
+.image-container{
+  width: 40px;
+  height: 40px;
+}
+
+.allCandidates{
+  overflow: scroll;
+  border: 2px solid #00000024;
+  border-radius: 5px;
+  box-shadow: 2px 2px 6px #00000024
+}
+
+.match{
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.match-btn{
+
+  border: 2px solid #00000024;
+  padding: 8px;
+  box-shadow: 2px 2px 6px #00000024;
+  background-color: rgb(16 100 16 / 68%);
+  border-radius: 5px;
+
+}
+
+.logOutBtn{
+  background-color: #446190;
+  padding: 7px 19px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px #00000052;
+
+}
+
+.botton-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.button-section{
+  margin: 10px;
+  background-color: #92b4e7bf;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px #00000052;
+  height: 50px;
+  
+}
+.message-btn{
+
+  color: white;
+  font-weight:500;
+  text-decoration: none;
+  margin: 5px;
+  padding: 4px;
+} 
+.imgContainer{
+  height: 30px;
+  width: 30px;
+  margin-bottom: 3px;
+}
