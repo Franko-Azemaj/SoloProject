@@ -20,6 +20,7 @@ public class CompanyController : Controller
     [HttpGet("Companyindex")]
     public ActionResult CompanyIndex()
     {
+        //Check if the user is loged in or not 
         if (HttpContext.Session.GetInt32("userId") == null)
         {
             return RedirectToAction("RegisterCompany");
@@ -139,6 +140,7 @@ public class CompanyController : Controller
         return View("CreatePosition");
     }
 
+    //Here is a temporary model that helps in getting both the job fields and skills 
     public class PositionModel
     {
         public string Name { get; set; }
@@ -161,16 +163,20 @@ public class CompanyController : Controller
                 CompanyId = id
             };
             _context.Jobs.Add(newJob);
-            List<Skill> AllSkills = new List<Skill>();
 
+            List<Skill> AllSkills = new List<Skill>();
+            //adding all the skills in this temporary list 
             foreach (var skill in Skill.Skills)
             {
                 AllSkills.Add(skill);
             }
 
             foreach (var code in position.skills)
-            {
+            {      
+                //getting the skill by code 
+                // code is just an unique number
                 ViewBag.skill = AllSkills.FirstOrDefault(e => e.Code == code);
+                //adding skills to the database
                 JobSkill newJobSkill = new JobSkill
                 {
                     SkillCreator = newJob,
@@ -181,9 +187,12 @@ public class CompanyController : Controller
                 _context.JobSkills.Add(newJobSkill);
             }
             _context.SaveChanges();
+            //Getting all the developers
             var DevProf = _context.DevProfiles.Include(e => e.SelectedSkills).ToList();
+            //The current job 
             var CurrentJob = _context.Jobs.Include(e => e.SkillsNeeded).FirstOrDefault(e => e.JobId == newJob.JobId);
             int count = 0;
+            //foreach developer we check if all the skills that he has are the same skills that the job requires
             foreach (var devP in DevProf)
             {
                 foreach (var job in devP.SelectedSkills)
